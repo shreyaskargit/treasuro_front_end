@@ -1,0 +1,25 @@
+.homeBox {
+  display: inline-block;
+  margin: 0 auto;
+  border: none;
+  border-radius: 60px;
+  text-align: center;
+  background: transparent;
+  min-width: 30vw;
+  padding: 2vh 1vw;
+  /* min-height: 30vh; */
+}
+.homeBox a {
+  padding: 1vh 5vw;
+  margin: 1vh 0.5vw;
+  border: 3px solid white;
+  border-radius: 25px;
+  font-size: 1.5rem;
+  text-decoration: none;
+}
+
+.homeBox a:hover,
+.homeBox a:focus {
+  background-color: white;
+  color: rgb(191, 41, 111);
+}
