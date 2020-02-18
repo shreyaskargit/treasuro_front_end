@@ -68,6 +68,7 @@ export default class SignUp extends React.Component {
     if (this.checkValidation()) {
       console.log("all good");
       const url = `${BaseUrl}/api/user/register`;
+      console.log(url);
       const res = await axios.post(url, {
         FirstName: this.state.firstName,
         LastName: this.state.lastName,
@@ -172,7 +173,7 @@ export default class SignUp extends React.Component {
           </form>
           <div>
             <p>
-              Already in Hunt <Link to="/login">Log In</Link>
+              Already in Hunt? <Link to="/login">Log In</Link>
             </p>
           </div>
         </div>

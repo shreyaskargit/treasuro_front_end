@@ -1,3 +1,9 @@
+@font-face {
+  font-family: "Lemon Milk";
+  src: url("./assets/arcamajora3/Webfonts/Milk.eot"),
+    url("./assets/arcamajora3/Webfonts/Milk.woff") format("woff"),
+    url("./assets/arcamajora3/Webfonts/Milk.woff2") format("woff2");
+}
 .leader-comp {
   display: flex;
   justify-content: space-around;
@@ -23,12 +29,13 @@
   z-index: 100;
   margin: 0 auto;
   text-align: center;
-  min-width: 30vw;
+  width: 36vw;
+  font-size: 1.2em;
   padding: 2vh 1vw;
   min-height: 30vh;
   max-height: 55vh;
-  border: 2px solid white;
-  border-radius: 70px;
+  border: none;
+  border-radius: 0;
   background: rgba(105, 29, 57, 0.8);
 }
 .leader-box::-webkit-scrollbar {
@@ -46,8 +53,10 @@
 
 .leader-box h1 {
   color: white;
-  font-size: 2em;
-  font-weight: lighter;
+  font-size: 1.5em;
+  font-family: "Lemon Milk";
+  letter-spacing: 0.12em;
+  font-weight: bold;
   margin-bottom: 2vh;
 }
 
@@ -82,12 +91,12 @@
   }
   .leader-box {
     border-radius: 10px;
-    width: 60vw;
+    width: 80vw;
     min-height: 5vh;
-    max-height: 40vh;
+    max-height: 60vh;
   }
   .leader-box h1 {
-    font-size: 1em;
+    font-size: 1.5em;
     text-align: center;
   }
   .user-details {

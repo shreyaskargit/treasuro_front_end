@@ -1,3 +1,12 @@
+@font-face {
+  font-family: "Arca Major 3";
+  src: url("./assets/arcamajora3/Webfonts/ArcaMajora3-Bold.eot"),
+    url("./assets/arcamajora3/Webfonts/ArcaMajora3-Bold.woff") format("woff"),
+    url("./assets/arcamajora3/Webfonts/ArcaMajora3-Bold.woff2") format("woff2"),
+    url("./assets/arcamajora3/Webfonts/ArcaMajora3-Heavy.eot"),
+    url("./assets/arcamajora3/Webfonts/ArcaMajora3-Heavy.woff") format("woff"),
+    url("./assets/arcamajora3/Webfonts/ArcaMajora3-Heavy.woff2") format("woff2");
+}
 nav {
   width: 5vw;
   margin: 0;
@@ -6,14 +15,18 @@ nav {
   z-index: 1000;
 }
 nav .menu .icon {
-  margin-left: 2vw;
-  margin-top: 100vh;
+  position: fixed;
+  left: 2vw;
+  top: 3vh;
   font-size: 2rem;
   cursor: pointer;
 }
 
 .head {
   margin: 3vh auto;
+  position: relative;
+  margin-bottom: 0;
+  z-index: 50;
   height: 30vh;
   width: 40vw;
   background: url("./assets/treasuro\ logo\ final.png");
@@ -26,7 +39,7 @@ nav .menu .sidebar {
   display: none;
   position: fixed;
   z-index: 1005;
-  background: rgba(191, 41, 111);
+  background: rgba(191, 41, 111, 1);
   margin: 0;
   top: 0;
   left: 0;
@@ -57,6 +70,7 @@ nav .menu .sidebar .close {
 .sidebar > span,
 .sidebar p {
   display: inline-block;
+  font-family: "Arca Major 3" !important;
   font-weight: bold;
   text-decoration: none;
   margin: 0 1vw;
@@ -121,6 +135,12 @@ nav .menu .sidebar .close {
   }
 
   nav .menu .icon {
-    margin-left: 0;
+    position: fixed;
+    top: 3vh;
+    left: 5vw;
+    z-index: 100;
+    /* margin-left: 3vw; */
+    z-index: 10;
+    margin-right: 1000px;
   }
 }

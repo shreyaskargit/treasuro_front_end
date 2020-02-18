@@ -14,7 +14,8 @@ import "./pages/css/style.css";
 
 export default class App extends React.Component {
   state = {
-    loading: true
+    loading: true,
+    name: ""
   };
 
   componentDidMount = async () => {
@@ -55,14 +56,14 @@ export default class App extends React.Component {
             </div>
             <Router history={history}>
               <div>
-                <Header />
+                <Header username={this.state.name} />
                 <Switch>
                   <Route path="/login" exact component={Login} />
                   <Route path="/signup" exact component={SignUp} />
                   <Route path="/leaderboard" exact component={LeaderBoard} />
                   <Route path="/rules" exact component={Rules} />
                   <Route path="/contact" exact component={Contact} />
-                  <Route path="/:id" component={Home} />
+                  <Route path="/:id" component={Home} />} />
                   <Route
                     exact
                     path="/"

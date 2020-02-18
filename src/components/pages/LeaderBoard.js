@@ -45,10 +45,10 @@ export default class LeaderBoard extends React.Component {
             <h1>LEADERBOARD</h1>
             <ol>{this.getList()}</ol>
           </div>
-          <div className="user-details">
+          {/* <div className="user-details">
             <p>Your Current Position: 123</p>
             <p>Your Current Points: 8000</p>
-          </div>
+          </div> */}
         </div>
       );
     }

@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import ToggleKnob from "../components/ToggleKnob";
+import History from "../history";
 // import soundFile from "./pages/css/assets/SOUND_IN_KB.mp3";
 import "./pages/css/Header.css";
 
@@ -58,13 +59,22 @@ export default class Header extends React.Component {
     // return sound;
   };
 
+  handleLogout = () => {
+    console.log("logout");
+    localStorage.removeItem("token");
+    // window.location.reload();
+    History.push("/login");
+    this.sidebar.current.style.display = "none";
+  };
+
+  checkLogin = () => {
+    if (localStorage.getItem("token") == null) return { display: "None" };
+    else return { display: "block" };
+  };
+
   render() {
     if (this.state.loading) {
-      return (
-        <div className="loader">
-          {/* <img src="./pages/css/assets/loader_final.gif" alt="loader" /> */}
-        </div>
-      );
+      return <div className="loader"></div>;
     } else {
       return (
         <>
@@ -82,7 +92,9 @@ export default class Header extends React.Component {
                   &#215;
                 </span>
                 <br />
-                <Link to="/home">Home</Link>
+                <Link onClick={this.handleClose} to="/home">
+                  Home
+                </Link>
                 <br />
                 <span className="sound">
                   Sound<span> </span>
@@ -98,44 +110,36 @@ export default class Header extends React.Component {
                   </span>
                 </span>
                 <br />
-                <Link to="/leaderboard">LeaderBoard</Link>
+                <Link onClick={this.handleClose} to="/leaderboard">
+                  Leaderboard
+                </Link>
                 <br />
-                <Link to="/rules">Rules</Link>
+                <Link onClick={this.handleClose} to="/rules">
+                  Rules
+                </Link>
                 <br />
-                <Link to="/contact">Contact</Link>
+                <a
+                  onClick={this.handleClose}
+                  href="https://www.facebook.com/jssmmil/"
+                >
+                  Contact
+                </a>
+                <Link
+                  style={this.checkLogin()}
+                  onClick={this.handleLogout}
+                  to="/login"
+                >
+                  Log Out
+                </Link>
                 <p className="footer">Powered By MMIL</p>
+                <br />
               </div>
             </div>
           </nav>
-          <header className="head"></header>
+          <div className="head"></div>
           <audio src={this.state.sound} autoPlay loop muted={this.state.mute} />
         </>
       );
     }
   }
 }
-
-/* <Switch
-                    value={this.state.value}
-                    onChange={this.handleOnChange}
-                    styles={{
-                      // zIndex: 10010,
-                      // width: "100px",
-                      // height: "500px",
-                      track: {
-                        backgroundColor: "white"
-                      },
-                      trackChecked: {
-                        backgroundColor: "blue"
-                      },
-                      button: {
-                        backgroundColor: "blue"
-                        // width: "20px",
-                        // left: "100%"
-                      },
-                      buttonChecked: {
-                        backgroundColor: "white"
-                        // width: "20px"
-                      }
-                    }}
-                  /> */

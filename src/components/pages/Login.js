@@ -62,7 +62,7 @@ export default class Login extends React.Component {
         </form>
         <div>
           <p>
-            New in Hunt <Link to="/signup">Register Here</Link>
+            New in Hunt? <Link to="/signup">Register Here</Link>
           </p>
         </div>
       </div>

@@ -40,18 +40,13 @@ export default class Rules extends React.Component {
             Appeals: There are no appeals in this game but if you think there is
             an error, feel free to contact us.
           </li>
-          <li>
-            Judgments:
-            <ul>
-              <li>
-                The society holds the right to disqualify any individual in case
-                of any unethical means.
-              </li>
-            </ul>
+          <li style={{ fontSize: "1.6em" }}>
+            The society holds the right to disqualify any individual in case of
+            any unethical means.
           </li>
         </ul>
 
-        <Link to="/home">Home</Link>
+        <Link to="/login">Start</Link>
       </div>
     );
   }

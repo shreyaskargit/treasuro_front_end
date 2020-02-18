@@ -7,8 +7,8 @@
   width: 70vw;
   padding: 2vh 1vw;
   min-height: 30vh;
-  border: 2px solid white;
-  border-radius: 70px;
+  border: none;
+  border-radius: 0;
   background: rgba(105, 29, 57, 0.8);
 }
 
@@ -29,15 +29,15 @@
   word-spacing: 3px;
 
   position: relative;
-  padding-left: 0.75em;
+  padding-left: 1.5em;
 }
 
 li:before {
   content: "";
   position: absolute;
-  left: 0;
+  left: 10px;
   top: 0.6em;
-  background: red;
+  background: white;
 }
 
 .rule-box li:before {

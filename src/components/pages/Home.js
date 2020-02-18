@@ -63,8 +63,10 @@ export default class Home extends React.Component {
     const data = {
       username: res.data.data.user.username,
       level: res.data.data.user.level,
-      top: res.data.data.user.top
+      top: 5 - res.data.data.user.top / 2 + 1,
+      score: res.data.data.user.score
     };
+    // this.props.getUser(data.username);
     await this.setState({ data: data });
     await this.setState({ loading: false });
     // const question = "this is a question";
@@ -83,7 +85,11 @@ export default class Home extends React.Component {
         return (
           <div className="homeBox">
             <Link to="/login">Login</Link>
-            <Link to="signup">Register</Link>
+            <Link to="/signup">Register</Link>
+            <br />
+            <Link className="leader-button" to="/leaderboard">
+              Leaderboard
+            </Link>
           </div>
         );
       } else {
