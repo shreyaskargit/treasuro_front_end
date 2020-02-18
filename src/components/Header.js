@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import ToggleKnob from "../components/ToggleKnob";
-import soundFile from "../TREASURO_AUDIO_FINAL.mp3";
+// import soundFile from "./pages/css/assets/SOUND_IN_KB.mp3";
 import "./pages/css/Header.css";
 
 export default class Header extends React.Component {
@@ -11,7 +11,9 @@ export default class Header extends React.Component {
     this.state = {
       mute: false,
       // value: 1,
-      isOn: false
+      isOn: true,
+      sound: "",
+      loading: true
     };
     this.sidebar = React.createRef();
     this.icon = React.createRef();
@@ -28,6 +30,7 @@ export default class Header extends React.Component {
   }
 
   async componentDidMount() {
+    this.getSound();
     // await this.handleClick();
   }
 
@@ -39,60 +42,76 @@ export default class Header extends React.Component {
     this.sidebar.current.style.display = "none";
   };
 
-  handleClick = () => {
-    this.setState(prevState => ({
+  handleClick = async () => {
+    await this.setState(prevState => ({
       isOn: !prevState.isOn,
       mute: !this.state.mute
     }));
     console.log(this.state);
   };
 
+  getSound = async () => {
+    let sound = await require("./pages/css/assets/SOUND_IN_KB.mp3");
+    await this.setState({ sound: sound });
+    await this.setState({ loading: false });
+    console.log(this.state);
+    // return sound;
+  };
+
   render() {
-    return (
-      <>
-        <nav>
-          <div className="menu">
-            <span className="icon" onClick={this.displayMenu}>
-              &#9781;
-            </span>
-            <div className="sidebar" ref={this.sidebar}>
-              <span
-                className="close"
-                ref={this.icon}
-                onClick={this.handleClose}
-              >
-                &#215;
+    if (this.state.loading) {
+      return (
+        <div className="loader">
+          {/* <img src="./pages/css/assets/loader_final.gif" alt="loader" /> */}
+        </div>
+      );
+    } else {
+      return (
+        <>
+          <nav>
+            <div className="menu">
+              <span className="icon" onClick={this.displayMenu}>
+                &#9781;
               </span>
-              <br />
-              <Link to="/home">Home</Link>
-              <br />
-              <span className="sound">
-                Sound<span> </span>
-                <span className="toggle">
-                  <button
-                    className={`toggleContainer ${
-                      this.state.isOn ? "isActive" : ""
-                    }`}
-                    onClick={() => this.handleClick()}
-                  >
-                    <ToggleKnob isOn={this.state.isOn} />
-                  </button>
+              <div className="sidebar" ref={this.sidebar}>
+                <span
+                  className="close"
+                  ref={this.icon}
+                  onClick={this.handleClose}
+                >
+                  &#215;
                 </span>
-              </span>
-              <br />
-              <Link to="/leaderboard">LeaderBoard</Link>
-              <br />
-              <Link to="/rules">Rules</Link>
-              <br />
-              <Link to="/contact">Contact</Link>
-              <p className="footer">Powered By MMIL</p>
+                <br />
+                <Link to="/home">Home</Link>
+                <br />
+                <span className="sound">
+                  Sound<span> </span>
+                  <span className="toggle">
+                    <button
+                      className={`toggleContainer ${
+                        this.state.isOn ? "isActive" : ""
+                      }`}
+                      onClick={() => this.handleClick()}
+                    >
+                      <ToggleKnob isOn={this.state.isOn} />
+                    </button>
+                  </span>
+                </span>
+                <br />
+                <Link to="/leaderboard">LeaderBoard</Link>
+                <br />
+                <Link to="/rules">Rules</Link>
+                <br />
+                <Link to="/contact">Contact</Link>
+                <p className="footer">Powered By MMIL</p>
+              </div>
             </div>
-          </div>
-        </nav>
-        <header className="head"></header>
-        <audio src={soundFile} loop muted={this.state.mute} />
-      </>
-    );
+          </nav>
+          <header className="head"></header>
+          <audio src={this.state.sound} autoPlay loop muted={this.state.mute} />
+        </>
+      );
+    }
   }
 }
 

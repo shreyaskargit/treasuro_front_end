@@ -8,7 +8,8 @@ import "./css/Login.css";
 export default class Login extends React.Component {
   state = {
     userName: "",
-    password: ""
+    password: "",
+    error: ""
   };
 
   onInputChange = async event => {
@@ -24,8 +25,12 @@ export default class Login extends React.Component {
       Password: this.state.password
     });
     console.log(res.data);
-    localStorage.setItem("token", res.data.data.token);
-    history.push("/home");
+    if (!res.data.success) {
+      await this.setState({ error: res.data.message });
+    } else {
+      localStorage.setItem("token", res.data.data.token);
+      history.push("/home");
+    }
   };
 
   render() {
@@ -52,6 +57,7 @@ export default class Login extends React.Component {
             style={{ width: "75%" }}
           />
           <br />
+          <p>{this.state.error}</p>
           <button type="submit">Login</button>
         </form>
         <div>

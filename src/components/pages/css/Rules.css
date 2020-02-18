@@ -1,0 +1,63 @@
+.rule-box {
+  display: inline-block;
+  position: relative;
+  z-index: 100;
+  margin: 0 auto;
+  text-align: left;
+  width: 70vw;
+  padding: 2vh 1vw;
+  min-height: 30vh;
+  border: 2px solid white;
+  border-radius: 70px;
+  background: rgba(105, 29, 57, 0.8);
+}
+
+.rule-box h1 {
+  text-align: center;
+  margin-bottom: 1vh;
+}
+
+.rule-box a {
+  font-size: 1.5em;
+  display: block;
+  text-align: center;
+}
+
+.rule-box li {
+  margin: 1vh 2vw;
+  font-size: larger;
+  word-spacing: 3px;
+
+  position: relative;
+  padding-left: 0.75em;
+}
+
+li:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  background: red;
+}
+
+.rule-box li:before {
+  width: 0.375em;
+  height: 0.375em;
+  -moz-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+@media screen and (max-width: 526px) {
+  .rule-box {
+    width: 82vw;
+    font-size: 0.8em;
+    border-radius: 5px;
+  }
+  .rule-box h1 {
+    font-size: 1.5em;
+  }
+  .rule-box ul {
+    margin-left: 0;
+  }
+}

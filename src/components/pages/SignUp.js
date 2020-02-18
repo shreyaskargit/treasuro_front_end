@@ -14,7 +14,8 @@ export default class SignUp extends React.Component {
     email: "",
     password: "",
     mobile: "",
-    error: ""
+    error: "",
+    loading: false
   };
 
   onInputChange = async event => {
@@ -77,6 +78,7 @@ export default class SignUp extends React.Component {
         username: this.state.userName
       });
       console.log(res);
+      await this.setState({ loading: false });
       if (!res.data.success) {
         await this.setState({ error: res.data.message });
       } else {
@@ -86,87 +88,95 @@ export default class SignUp extends React.Component {
   };
 
   render() {
-    return (
-      <div className="register">
-        <h1>Register</h1>
-        <form onSubmit={this.onFormSubmit}>
-          <input
-            className="firstName"
-            name="firstName"
-            value={this.state.firstName}
-            placeholder="First Name"
-            type="text"
-            onChange={this.onInputChange}
-            required
-          />
-          <input
-            className="lastName"
-            name="lastName"
-            value={this.state.lastName}
-            placeholder="Last Name"
-            type="text"
-            onChange={this.onInputChange}
-            required
-          />
-          <br />
-          <input
-            className="userName"
-            name="userName"
-            value={this.state.userName}
-            placeholder="User Name"
-            type="text"
-            onChange={this.onInputChange}
-            required
-          />
-          <br />
-          <input
-            className="uniqueId"
-            name="uniqueId"
-            value={this.state.uniqueId}
-            placeholder="Unique Id"
-            type="text"
-            onChange={this.onInputChange}
-            required
-          />
-          <br />
-          <input
-            className="email"
-            name="email"
-            value={this.state.email}
-            placeholder="Email ID"
-            type="email"
-            onChange={this.onInputChange}
-            required
-          />
-          <br />
-          <input
-            className="password"
-            name="password"
-            value={this.state.password}
-            placeholder="Password"
-            type="password"
-            onChange={this.onInputChange}
-            required
-          />
-          <input
-            className="mobile"
-            name="mobile"
-            value={this.state.mobile}
-            placeholder="Mobile"
-            type="numnber"
-            onChange={this.onInputChange}
-            required
-          />
-          <br />
-          <button type="submit">Register</button>
-          <p>{this.state.error}</p>
-        </form>
-        <div>
-          <p>
-            Already in Hunt <Link to="/login">Log In</Link>
-          </p>
+    if (this.state.loading) {
+      return (
+        <div className="loader">
+          {/* <img src="./pages/css/assets/loader_final.gif" alt="loader" /> */}
         </div>
-      </div>
-    );
+      );
+    } else {
+      return (
+        <div className="register">
+          <h1>Register</h1>
+          <form onSubmit={this.onFormSubmit}>
+            <input
+              className="firstName"
+              name="firstName"
+              value={this.state.firstName}
+              placeholder="First Name"
+              type="text"
+              onChange={this.onInputChange}
+              required
+            />
+            <input
+              className="lastName"
+              name="lastName"
+              value={this.state.lastName}
+              placeholder="Last Name"
+              type="text"
+              onChange={this.onInputChange}
+              required
+            />
+            <br />
+            <input
+              className="userName"
+              name="userName"
+              value={this.state.userName}
+              placeholder="User Name"
+              type="text"
+              onChange={this.onInputChange}
+              required
+            />
+            <br />
+            <input
+              className="uniqueId"
+              name="uniqueId"
+              value={this.state.uniqueId}
+              placeholder="Unique Id"
+              type="text"
+              onChange={this.onInputChange}
+              required
+            />
+            <br />
+            <input
+              className="email"
+              name="email"
+              value={this.state.email}
+              placeholder="Email ID"
+              type="email"
+              onChange={this.onInputChange}
+              required
+            />
+            <br />
+            <input
+              className="password"
+              name="password"
+              value={this.state.password}
+              placeholder="Password"
+              type="password"
+              onChange={this.onInputChange}
+              required
+            />
+            <input
+              className="mobile"
+              name="mobile"
+              value={this.state.mobile}
+              placeholder="Mobile"
+              type="numnber"
+              onChange={this.onInputChange}
+              required
+            />
+            <br />
+            <button type="submit">Register</button>
+            <p>{this.state.error}</p>
+          </form>
+          <div>
+            <p>
+              Already in Hunt <Link to="/login">Log In</Link>
+            </p>
+          </div>
+        </div>
+      );
+    }
   }
 }

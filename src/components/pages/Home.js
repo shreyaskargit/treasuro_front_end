@@ -8,22 +8,46 @@ import "./css/Home.css";
 export default class Home extends React.Component {
   state = {
     data: [],
-    question: ""
+    question: "",
+    loading: false
   };
 
   componentDidMount = async () => {
+    this.getQuestions();
+    // this.getdetails();
+  };
+
+  getQuestions = async () => {
     let id = this.props.match.params.id;
     console.log(id);
-    let Url = `${BaseUrl}/api/question/submit`;
-    let res = await axios.get(Url, {
-      headers: {
-        "x-auth": localStorage.getItem("token")
-      },
-      query: {
-        answer: id
-      }
-    });
-    console.log(res);
+    let res, Url, que;
+    if (id === "home" || id.trim() === "") {
+      console.log("if");
+      Url = `${BaseUrl}/api/question/current`;
+      res = await axios.get(Url, {
+        headers: {
+          "x-auth": localStorage.getItem("token")
+        }
+      });
+      console.log(res.data.data.question.question);
+      que = res.data.data.question.question;
+    } else {
+      console.log("else");
+      Url = `${BaseUrl}/api/question/submit`;
+      res = await axios.get(Url, {
+        headers: {
+          "x-auth": localStorage.getItem("token")
+        },
+        params: { answer: id }
+      });
+    }
+    console.log(res.data.success);
+    if (!res.data.success) {
+      console.log("inside if");
+      que = res.data.message;
+    } else que = res.data.data.question.question;
+    await this.setState({ question: que });
+    console.log(this.state.question);
     this.getdetails();
   };
 
@@ -42,21 +66,31 @@ export default class Home extends React.Component {
       top: res.data.data.user.top
     };
     await this.setState({ data: data });
-    const question = "this is a question";
-    await this.setState({ question: question });
+    await this.setState({ loading: false });
+    // const question = "this is a question";
+    // await this.setState({ question: question });
   };
   render() {
-    if (localStorage.getItem("token") == null) {
+    // console.log("inhome");
+    if (this.state.loading) {
       return (
-        <div className="homeBox">
-          <Link to="/login">Login</Link>
-          <Link to="signup">Register</Link>
+        <div className="loader">
+          {/* <img src="./pages/css/assets/loader_final.gif" alt="loader" /> */}
         </div>
       );
     } else {
-      return (
-        <Dashboard data={this.state.data} question={this.state.question} />
-      );
+      if (localStorage.getItem("token") == null) {
+        return (
+          <div className="homeBox">
+            <Link to="/login">Login</Link>
+            <Link to="signup">Register</Link>
+          </div>
+        );
+      } else {
+        return (
+          <Dashboard data={this.state.data} question={this.state.question} />
+        );
+      }
     }
   }
 }

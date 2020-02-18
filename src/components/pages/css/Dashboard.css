@@ -1,0 +1,48 @@
+.dash-box {
+  /* display: flex; */
+  position: relative;
+  z-index: 100;
+  /* justify-content: space-around; */
+}
+
+.userInfo {
+  display: inline-block;
+  position: absolute;
+  top: -7vh;
+  z-index: 100000;
+  margin: 0 auto 2vh;
+  font-weight: bolder;
+  /* margin-left: 5px; */
+  margin: 0 auto;
+  text-align: left;
+  min-width: 13vw;
+  padding: 2vh 1vw;
+  height: 8vh;
+  color: black;
+  font-size: 1.3em;
+  border: none;
+  border-radius: 40px;
+  background: transparent;
+}
+.userInfo p {
+  color: black;
+}
+.userInfo .value {
+  color: white;
+}
+
+.question {
+  display: block;
+  position: relative;
+  margin: 2vh auto;
+  text-align: center;
+  width: 60vw;
+  font-size: 1.2em;
+  padding: 2vh 1vw;
+  min-height: 10vh;
+  /* top: -10vh; */
+  /* max-height: 55vh; */
+  border: none;
+  border-radius: 0;
+  background: rgba(105, 29, 57, 0.8);
+}

@@ -1,10 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./css/Rules.css";
 
 export default class Rules extends React.Component {
   render() {
     return (
-      <div className="container">
+      <div className="rule-box">
         <h1>Rules of Treasuro </h1>
         <ul>
           <li>
@@ -46,7 +47,6 @@ export default class Rules extends React.Component {
                 The society holds the right to disqualify any individual in case
                 of any unethical means.
               </li>
-              <li>blalldfkslfj</li>
             </ul>
           </li>
         </ul>
