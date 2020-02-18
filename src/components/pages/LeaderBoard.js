@@ -24,7 +24,7 @@ export default class LeaderBoard extends React.Component {
           {/* {index + 1}.)
           {item.username}
           {item.score} */}
-          <span className="right">{index + 1}.) </span>
+          <span className="right">{index + 1} </span>
           <span className="center">{item.username}</span>
           <span className="left">{item.score}</span>
         </li>

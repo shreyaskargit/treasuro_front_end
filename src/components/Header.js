@@ -12,9 +12,9 @@ export default class Header extends React.Component {
     this.state = {
       mute: true,
       // value: 1,
-      isOn: true,
+      isOn: false,
       sound: "",
-      loading: true
+      loading: false
     };
     this.sidebar = React.createRef();
     this.icon = React.createRef();
@@ -31,7 +31,6 @@ export default class Header extends React.Component {
   }
 
   async componentDidMount() {
-    await this.setState({ mute: false });
     this.getSound();
     // await this.handleClick();
   }
@@ -45,6 +44,9 @@ export default class Header extends React.Component {
   };
 
   handleClick = async () => {
+    let sound = await require("./pages/css/assets/SOUND_IN_KB.mp3");
+    await this.setState({ sound: sound });
+    // await this.setState({ loading: false });
     await this.setState(prevState => ({
       isOn: !prevState.isOn,
       mute: !this.state.mute
@@ -53,9 +55,6 @@ export default class Header extends React.Component {
   };
 
   getSound = async () => {
-    let sound = await require("./pages/css/assets/SOUND_IN_KB.mp3");
-    await this.setState({ sound: sound });
-    await this.setState({ loading: false });
     console.log(this.state);
     // return sound;
   };

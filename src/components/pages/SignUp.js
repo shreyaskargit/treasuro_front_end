@@ -30,33 +30,24 @@ export default class SignUp extends React.Component {
     console.log("In validation");
     console.log(this.state);
 
-    if (
-      !isletters.test(this.state.firstName) ||
-      this.state.firstName.length < 4
-    ) {
+    if (!isletters.test(this.state.firstName)) {
       await this.setState({ error: "Enter valid First Name" });
       await this.setState({ firstName: "" });
       return false;
-    } else if (
-      !isletters.test(this.state.lastName) ||
-      this.state.lastName.length < 4
-    ) {
+    } else if (!isletters.test(this.state.lastName)) {
       await this.setState({ error: "Enter valid Last Name" });
       await this.setState({ lastName: "" });
       return false;
     } else if (!isEmail.test(this.state.email)) {
       await this.setState({ error: "Not a valid Email" });
       await this.setState({ email: "" });
-    } else if (this.state.userName.length < 5) {
-      await this.setState({
-        error: "User Name too short must be greater than 5 characters"
-      });
-      await this.setState({ userName: "" });
+      return false;
     } else if (this.state.password.length < 5) {
       await this.setState({
         error: "Password too short must be greater than 5 characters"
       });
       await this.setState({ password: "" });
+      return false;
     } else {
       return true;
     }

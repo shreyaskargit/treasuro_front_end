@@ -18,7 +18,7 @@ export default class Home extends React.Component {
   };
 
   getQuestions = async () => {
-    let id = this.props.match.params.id;
+    let id = this.props.location.pathname.substring(1);
     console.log(id);
     let res, Url, que;
     if (id === "home" || id == null) {
@@ -63,7 +63,7 @@ export default class Home extends React.Component {
     const data = {
       username: res.data.data.user.username,
       level: res.data.data.user.level,
-      top: 5 - res.data.data.user.top / 2 + 1,
+      top: 5 - res.data.data.user.top / 2,
       score: res.data.data.user.score
     };
     // this.props.getUser(data.username);

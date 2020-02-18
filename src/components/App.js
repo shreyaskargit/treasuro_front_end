@@ -1,5 +1,5 @@
 import React from "react";
-import { Router, Route, Switch, Redirect } from "react-router-dom";
+import { Router, Route, Switch } from "react-router-dom";
 // import GifLoader from "react-gif-loader";
 import history from "../history";
 import Home from "./pages/Home";
@@ -23,7 +23,7 @@ export default class App extends React.Component {
       function() {
         this.setState({ loading: false });
       }.bind(this),
-      4000
+      6000
     );
   };
 

@@ -7,9 +7,24 @@
   width: 70vw;
   padding: 2vh 1vw;
   min-height: 30vh;
+  max-height: 60vh;
+  overflow-y: scroll;
   border: none;
   border-radius: 0;
   background: rgba(105, 29, 57, 0.8);
+}
+
+.rule-box::-webkit-scrollbar {
+  width: 0.2em;
+}
+
+.rule-box::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.rule-box::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  outline: 1px solid transparent;
 }
 
 .rule-box h1 {
