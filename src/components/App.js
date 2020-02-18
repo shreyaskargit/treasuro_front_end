@@ -67,7 +67,8 @@ export default class App extends React.Component {
                   <Route
                     exact
                     path="/"
-                    render={() => <Redirect to="/home" />}
+                    component={Home}
+                    // render={() => <Redirect to="/home" />}
                   />
                 </Switch>
               </div>

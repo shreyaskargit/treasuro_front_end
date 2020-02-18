@@ -1,7 +1,7 @@
 * {
   top: 0;
   margin: 0;
-  overflow-x: hidden !important;
+  overflow: hidden !important;
   font-family: "Roboto", sans-serif;
   color: white;
 }
@@ -61,7 +61,7 @@ form button {
 } */
 .birdbox {
   z-index: 1;
-  width: 100vw;
+  width: 100%;
   top: 47vh;
   position: absolute;
   overflow: hidden;

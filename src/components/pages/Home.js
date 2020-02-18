@@ -21,7 +21,7 @@ export default class Home extends React.Component {
     let id = this.props.match.params.id;
     console.log(id);
     let res, Url, que;
-    if (id === "home" || id.trim() === "") {
+    if (id === "home" || id == null) {
       console.log("if");
       Url = `${BaseUrl}/api/question/current`;
       res = await axios.get(Url, {

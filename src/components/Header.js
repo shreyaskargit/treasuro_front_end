@@ -10,7 +10,7 @@ export default class Header extends React.Component {
     super(props);
 
     this.state = {
-      mute: false,
+      mute: true,
       // value: 1,
       isOn: true,
       sound: "",
@@ -31,6 +31,7 @@ export default class Header extends React.Component {
   }
 
   async componentDidMount() {
+    await this.setState({ mute: false });
     this.getSound();
     // await this.handleClick();
   }
@@ -137,7 +138,13 @@ export default class Header extends React.Component {
             </div>
           </nav>
           <div className="head"></div>
-          <audio src={this.state.sound} autoPlay loop muted={this.state.mute} />
+          <audio
+            src={this.state.sound}
+            // controls
+            autoPlay
+            loop
+            muted={this.state.mute}
+          />
         </>
       );
     }
