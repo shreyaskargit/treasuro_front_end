@@ -32,6 +32,7 @@ export default class Header extends React.Component {
 
   async componentDidMount() {
     this.getSound();
+    this.checkLogin();
     // await this.handleClick();
   }
 

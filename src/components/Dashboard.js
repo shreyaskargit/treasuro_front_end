@@ -42,6 +42,7 @@ export default class Dashboard extends React.Component {
         <div className="question">
           {/* <p>{this.props.question}</p> */}
           <p>{this.props.question}</p>
+          <p>{this.props.error}</p>
         </div>
       </div>
     );

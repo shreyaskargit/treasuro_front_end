@@ -30,6 +30,7 @@
   margin: 0 auto;
   text-align: center;
   width: 36vw;
+  overflow-y: scroll;
   font-size: 1.2em;
   padding: 2vh 1vw;
   min-height: 30vh;
@@ -39,7 +40,7 @@
   background: rgba(105, 29, 57, 0.8);
 }
 .leader-box::-webkit-scrollbar {
-  width: 0.6em;
+  width: 0.2em;
 }
 
 .leader-box::-webkit-scrollbar-track {
@@ -91,6 +92,7 @@
   }
   .leader-box {
     border-radius: 10px;
+    padding: auto 3vw;
     width: 80vw;
     min-height: 5vh;
     max-height: 60vh;

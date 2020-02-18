@@ -26,7 +26,7 @@ export default class Login extends React.Component {
     });
     console.log(res.data);
     if (!res.data.success) {
-      await this.setState({ error: res.data.message });
+      await this.setState({ error: "INVALID CREDENTIALS" });
     } else {
       localStorage.setItem("token", res.data.data.token);
       history.push("/home");
@@ -57,7 +57,7 @@ export default class Login extends React.Component {
             style={{ width: "75%" }}
           />
           <br />
-          <p>{this.state.error}</p>
+          <p style={{ color: "black" }}>{this.state.error}</p>
           <button type="submit">Login</button>
         </form>
         <div>

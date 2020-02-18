@@ -9,6 +9,7 @@ export default class Home extends React.Component {
   state = {
     data: [],
     question: "",
+    error: "",
     loading: false
   };
 
@@ -21,7 +22,7 @@ export default class Home extends React.Component {
     let id = this.props.location.pathname.substring(1);
     console.log(id);
     let res, Url, que;
-    if (id === "home" || id == null) {
+    if (id === "home" || id == null || id === "") {
       console.log("if");
       Url = `${BaseUrl}/api/question/current`;
       res = await axios.get(Url, {
@@ -44,8 +45,10 @@ export default class Home extends React.Component {
     console.log(res.data.success);
     if (!res.data.success) {
       console.log("inside if");
-      que = res.data.message;
-    } else que = res.data.data.question.question;
+      let error = res.data.message;
+      await this.setState({ error: error });
+    }
+    que = res.data.data.question.question;
     await this.setState({ question: que });
     console.log(this.state.question);
     this.getdetails();
@@ -94,7 +97,11 @@ export default class Home extends React.Component {
         );
       } else {
         return (
-          <Dashboard data={this.state.data} question={this.state.question} />
+          <Dashboard
+            data={this.state.data}
+            question={this.state.question}
+            error={this.state.error}
+          />
         );
       }
     }
