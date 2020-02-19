@@ -31,7 +31,7 @@ export default class Header extends React.Component {
   }
 
   async componentDidMount() {
-    this.getSound();
+    // this.getSound();
     this.checkLogin();
     // await this.handleClick();
   }
@@ -52,16 +52,16 @@ export default class Header extends React.Component {
       isOn: !prevState.isOn,
       mute: !this.state.mute
     }));
-    console.log(this.state);
+    // console.log(this.state);
   };
 
-  getSound = async () => {
-    console.log(this.state);
-    // return sound;
-  };
+  // getSound = async () => {
+  // console.log(this.state);
+  // return sound;
+  // };
 
   handleLogout = () => {
-    console.log("logout");
+    // console.log("logout");
     localStorage.removeItem("token");
     // window.location.reload();
     History.push("/login");

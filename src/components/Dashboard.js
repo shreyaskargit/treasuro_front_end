@@ -3,7 +3,7 @@ import "./pages/css/Dashboard.css";
 
 export default class Dashboard extends React.Component {
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     return (
       <div className="dash-box">
         <div className="userInfo">

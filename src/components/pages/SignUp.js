@@ -27,8 +27,8 @@ export default class SignUp extends React.Component {
     // const hasSymbol = /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
     const isletters = /^[a-zA-Z]+$/;
     const isEmail = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/;
-    console.log("In validation");
-    console.log(this.state);
+    // console.log("In validation");
+    // console.log(this.state);
 
     if (!isletters.test(this.state.firstName)) {
       await this.setState({ error: "Enter valid First Name" });
@@ -55,11 +55,11 @@ export default class SignUp extends React.Component {
 
   onFormSubmit = async event => {
     event.preventDefault();
-    console.log(event);
+    // console.log(event);
     if (this.checkValidation()) {
-      console.log("all good");
+      // console.log("all good");
       const url = `${BaseUrl}/api/user/register`;
-      console.log(url);
+      // console.log(url);
       const res = await axios.post(url, {
         FirstName: this.state.firstName,
         LastName: this.state.lastName,
@@ -69,7 +69,7 @@ export default class SignUp extends React.Component {
         SignupID: this.state.uniqueId,
         username: this.state.userName
       });
-      console.log(res);
+      // console.log(res);
       await this.setState({ loading: false });
       if (!res.data.success) {
         await this.setState({ error: res.data.message });

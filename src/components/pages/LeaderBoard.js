@@ -16,9 +16,9 @@ export default class LeaderBoard extends React.Component {
     this.getList();
   };
   getList = () => {
-    console.log(this.state.list);
+    // console.log(this.state.list);
     return this.state.list.map((item, index) => {
-      console.log(item.username);
+      // console.log(item.username);
       return (
         <li key={index}>
           {/* {index + 1}.)

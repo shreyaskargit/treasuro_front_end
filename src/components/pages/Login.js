@@ -18,13 +18,13 @@ export default class Login extends React.Component {
 
   onFormSubmit = async event => {
     event.preventDefault();
-    console.log(this.state);
+    // console.log(this.state);
     const url = `${BaseUrl}/api/user/login`;
     const res = await axios.post(url, {
       username: this.state.userName,
       Password: this.state.password
     });
-    console.log(res.data);
+    // console.log(res.data);
     if (!res.data.success) {
       await this.setState({ error: "INVALID CREDENTIALS" });
     } else {

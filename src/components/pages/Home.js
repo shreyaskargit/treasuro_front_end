@@ -23,14 +23,14 @@ export default class Home extends React.Component {
     console.log(id);
     let res, Url, que;
     if (id === "home" || id == null || id === "") {
-      console.log("if");
+      // console.log("if");
       Url = `${BaseUrl}/api/question/current`;
       res = await axios.get(Url, {
         headers: {
           "x-auth": localStorage.getItem("token")
         }
       });
-      console.log(res.data.data.question.question);
+      // console.log(res.data.data.question.question);
       que = res.data.data.question.question;
     } else {
       console.log("else");
@@ -42,27 +42,27 @@ export default class Home extends React.Component {
         params: { answer: id }
       });
     }
-    console.log(res.data.success);
+    // console.log(res.data.success);
     if (!res.data.success) {
-      console.log("inside if");
+      // console.log("inside if");
       let error = res.data.message;
       await this.setState({ error: error });
     }
     que = res.data.data.question.question;
     await this.setState({ question: que });
-    console.log(this.state.question);
+    // console.log(this.state.question);
     this.getdetails();
   };
 
   getdetails = async () => {
-    console.log("In getstates");
+    // console.log("In getstates");
     let url = `${BaseUrl}/api/user/myProfile`;
     let res = await axios.get(url, {
       headers: {
         "x-auth": localStorage.getItem("token")
       }
     });
-    console.log(res.data.data.user);
+    // console.log(res.data.data.user);
     const data = {
       username: res.data.data.user.username,
       level: res.data.data.user.level,
