@@ -1,10 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
-import BaseUrl from "../../api/Url";
-import Dashboard from "../Dashboard";
-// import History from "../../history";
-import "./css/Home.css";
+import BaseUrl from "../api/Url";
+import Dashboard from "./Dashboard";
+import "./pages/css/Home.css";
+import History from "../history";
 
 export default class Home extends React.Component {
   state = {
@@ -15,42 +14,24 @@ export default class Home extends React.Component {
   };
 
   componentDidMount = async () => {
-    if (localStorage.getItem("token") != null) this.getQuestions();
-    // else History.push("/login");
+    if (localStorage.getItem("token") != null) this.displayBonus();
+    else History.push("/login");
     // this.getdetails();
   };
 
-  getQuestions = async () => {
-    let id = this.props.location.pathname.substring(1);
-    console.log(id);
+  displayBonus = async () => {
     let res,
       Url,
       que = "";
     try {
-      if (id === "home" || id == null || id === "") {
-        // console.log("if");
-        Url = `${BaseUrl}/api/question/current`;
-        res = await axios.get(Url, {
-          headers: {
-            "x-auth": localStorage.getItem("token")
-          }
-        });
-        // console.log(res.data.data.question.question);
-        if (res.data.success) que = res.data.data.question.question;
-        else que = "";
-      } else if (id === "luck") {
-        console.log("in home luck");
-      } else {
-        // console.log("else");
-        Url = `${BaseUrl}/api/question/submit`;
-        res = await axios.get(Url, {
-          headers: {
-            "x-auth": localStorage.getItem("token")
-          },
-          params: { answer: id }
-        });
-        que = res.data.data.question.question;
-      }
+      Url = `${BaseUrl}/api/bonus`;
+      res = await axios.get(Url, {
+        headers: {
+          "x-auth": localStorage.getItem("token")
+        }
+      });
+      que = res.data.message;
+      //   console.log(res.data);
       // console.log(res.data.success);
       if (!res.data.success) {
         // console.log("inside if");
@@ -101,23 +82,12 @@ export default class Home extends React.Component {
         </div>
       );
     } else {
-      if (localStorage.getItem("token") == null) {
-        return (
-          <div className="homeBox">
-            <Link to="/login">Login</Link>
-            <Link to="/signup">Register</Link>
-            <br />
-            <Link className="leader-button" to="/leaderboard">
-              Leaderboard
-            </Link>
-          </div>
-        );
-      } else {
+      if (localStorage.getItem("token") != null) {
         return (
           <Dashboard
             data={this.state.data}
             question={this.state.question}
-            error={this.state.error}
+            // error={this.state.error}
           />
         );
       }

@@ -4,7 +4,7 @@ import { Router, Route, Switch } from "react-router-dom";
 import history from "../history";
 import Home from "./pages/Home";
 import LeaderBoard from "./pages/LeaderBoard";
-import Contact from "./pages/Contact";
+import Bonus from "./Bonus";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import Rules from "./pages/Rules";
@@ -62,7 +62,7 @@ export default class App extends React.Component {
                   <Route path="/signup" exact component={SignUp} />
                   <Route path="/leaderboard" exact component={LeaderBoard} />
                   <Route path="/rules" exact component={Rules} />
-                  <Route path="/contact" exact component={Contact} />
+                  <Route path="/bonus" exact component={Bonus} />
                   <Route path="/:id" component={Home} />} />
                   <Route
                     exact
